@@ -14,15 +14,17 @@ const Header = () => {
     
     return( 
         <>
-          <nav id='nav'>  
-        {location.pathname !== '/' && <NavLink className='home' to='/'>Home</NavLink>}
-        {location.pathname !== '/' && <NavLink className='credit' to='/credit'>Credit</NavLink>}
-        <SearchForm />
-          </nav>
+        {location.pathname !== '/' &&  <nav id='nav'>
+
+
+        {location.pathname !== '/' && <SearchForm />}
+        {/* {location.pathname !== '/' && <NavLink className='home' to='/'>Home</NavLink>}
+        {location.pathname !== '/' && <NavLink className='credit' to='/credit'>Credit</NavLink>} */}
+
+          </nav>}
 
         {location.pathname === '/' && <NavLink className='enter' to='arts'>Enter</NavLink>}
-        <br />
-        <br />
+
         <Outlet />
         {isLoading && <LoadingSpinner />}
     </>

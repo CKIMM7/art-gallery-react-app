@@ -15,8 +15,14 @@ const Artist = () => {
             method: 'GET',
           })
           .then (artist => {
+
+            console.log(artist)
             setArtist(artist.data.data)
-            setAltTitles(artist.data.data.alt_titles)
+
+            if(!artist.data.data.alt_titles) setAltTitles(['Not available'])
+            else {
+              setAltTitles(artist.data.data.alt_titles)
+            }
             console.log(artist.data.data.alt_titles)
           })
           .catch(err => {
@@ -29,19 +35,21 @@ const Artist = () => {
 
        //console.log(altTitles.map((alt, index) => console.log(alt)))
       const altTitlesArray = altTitles.map((alt, index)=> {
-            return (<li
-            key={index}>
-            {alt}
+
+            return (
+            <li
+              key={index}>
+              {alt}
             </li>)
       })
 
     return(
         <div className='artist'>
             <h2>{artist.title}</h2>
-            <p>Birth Date: {artist.birth_date}</p>
-            <p>Deseased: {artist.death_date}</p>
+            {artist.birth_date ? <p>Birth Date: {artist.birth_date}</p>: <p>Not available</p>}
+            {artist.death_date ?<p>Deseased: {artist.death_date}</p>: <p>Not available</p>} 
+            {/* {altTitlesArray ? <ul>{altTitlesArray}</ul> : <p>No Alt titles</p>} */}
             <ul>{altTitlesArray}</ul>
-            <p>Artist: {artistId}</p>
         </div>
     )
 }

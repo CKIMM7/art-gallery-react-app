@@ -17,6 +17,7 @@ export default function ArtSearch() {
   const searchArray = useSelector((state) => state.cart.searchArray);
   const error = useSelector((state) => state.cart.error);
   const pageNumSearch = useSelector((state) => state.cart.pageNumSearch);
+  const params1 = useSelector((state) => state.cart.params);
 
 
 const intObserver = useRef()
@@ -57,7 +58,13 @@ const intObserver = useRef()
 
     if(searchValue === '')
     console.log(`searchValue does not exist`)
+    console.log(searchValue)
+
+    if(params) {
+    console.log('dispatch(artsActions.setSearchValue(params.query))')
+    console.log(params)
     dispatch(artsActions.setSearchValue(params.query))
+    }
 
     return () => {
       console.log('artsActions.setSearchArray([])')
@@ -65,7 +72,8 @@ const intObserver = useRef()
       dispatch(artsActions.setSearchArray([]))
     }
 
-  }, [])
+  }, [params.query])
+
 
 
   return (

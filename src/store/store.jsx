@@ -15,9 +15,14 @@ const artsSlice = createSlice({
       searchArray: [],
       isLoading: false,
       isError: false,
-      error: {}
+      error: {},
+      params: ''
   },
   reducers: {
+
+    setParams(state, action) {
+      state.params = action.payload
+    },
 
     setPageNumSearch(state, action) {
       state.pageNumSearch = state.pageNumSearch + action.payload

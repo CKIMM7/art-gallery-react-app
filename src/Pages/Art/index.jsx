@@ -35,7 +35,7 @@ const Cohort = ({ data }) => {
     return(
 
       <div className='art-details'>
-        <div className='frame'>
+        <div className='frame-details'>
         {img ? <img src={`https://www.artic.edu/iiif/2/${img}/full/400,/0/default.jpg`}></img> : <h1>Loading</h1> }
         </div>
 

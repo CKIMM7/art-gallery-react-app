@@ -18,6 +18,7 @@ const useSearchArts = () => {
     const pageNumSearch = useSelector((state) => state.cart.pageNumSearch);
     const searchArray = useSelector((state) => state.cart.searchArray);
     const nextPage = useSelector((state) => state.cart.nextPage);
+    const params = useSelector((state) => state.cart.params);
 
     useEffect(() => {
         dispatch(artsActions.setIsLoading(true))
@@ -28,11 +29,13 @@ const useSearchArts = () => {
         const { signal } = controller;
 
         console.log(searchValue)
+
+        if(searchValue || params)
     
         getArtsAxios(pageNumSearch, signal, searchValue)
         .then(data => { 
             console.log(searchValue)    
-
+            console.log(searchArray)
 
             let newArray = searchArray.concat(data.data)
             console.log(newArray)
@@ -53,7 +56,7 @@ const useSearchArts = () => {
 
         return () => controller.abort();    
 
-    }, [searchValue, pageNumSearch, nextPage])
+    }, [searchValue, pageNumSearch, nextPage, params])
 
     return { isError, error };
 }
