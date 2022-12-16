@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, current } from '@reduxjs/toolkit';
 
 const artsSlice = createSlice({
   name: 'arts',
@@ -11,6 +11,7 @@ const artsSlice = createSlice({
       categories:[],
       artistImage: '',
       searchValue: '',
+      searchedValues: [],
       textInput: '' ,
       searchArray: [],
       isLoading: false,
@@ -19,6 +20,15 @@ const artsSlice = createSlice({
       params: ''
   },
   reducers: {
+
+    setSearchedValues(state, action) {
+      if (!state.searchedValues.includes(action.payload)) {
+        console.log(action.payload)
+        state.searchedValues.push(action.payload)
+        console.log(current(state.searchedValues))
+      }
+
+    },
 
     setParams(state, action) {
       state.params = action.payload

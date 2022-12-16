@@ -15,12 +15,6 @@ const useGetArts = () => {
     const dispatch = useDispatch()
 
     const pageNum = useSelector((state) => state.cart.pageNum);
-    const artSearchPageNum = useSelector((state) => state.cart.artSearchPageNum);
-
-    const getMoreArts = useSelector((state) => state.cart.nextPage);
-
-    const searchValue = useSelector((state) => state.cart.searchValue);
-
     const isLoading = useSelector((state) => state.cart.isLoading);
 
 

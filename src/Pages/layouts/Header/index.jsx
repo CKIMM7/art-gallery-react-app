@@ -21,9 +21,9 @@ const Header = () => {
         {/* {location.pathname !== '/' && <NavLink className='home' to='/'>Home</NavLink>}
         {location.pathname !== '/' && <NavLink className='credit' to='/credit'>Credit</NavLink>} */}
 
-          </nav>}
+        <div><p>search</p></div>
+        </nav>}
 
-        {location.pathname === '/' && <NavLink className='enter' to='arts'>Enter</NavLink>}
 
         <Outlet />
         {isLoading && <LoadingSpinner />}
