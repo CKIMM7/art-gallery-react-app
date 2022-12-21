@@ -1,28 +1,46 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { artsActions } from "../../store/store";
 import axios from 'axios';
-import { useParams, useNavigate, Outlet } from 'react-router-dom'
+import { useParams, useNavigate, Outlet, useLocation } from 'react-router-dom'
 
 const Cohort = ({ data }) => {
     const navigate = useNavigate()
     const { name } = useParams();
+    const params = useParams();
     const [img, setImg] = useState('');
     const [art, setArt] = useState('');
-    console.log(name)
+    const { state } = useLocation();  
+    const dispatch = useDispatch()
+    const isLoading = useSelector((state) => state.cart.isLoading);
+    console.log(isLoading)
 
     function getArtist () {
-      return navigate(`artist/${art.artist_id}`)
+      return navigate(`artist/${art.artist_id}`, { state: { artist: art.artist_id } })
     }
+
+    console.log(state)
 
     useEffect(() => {
 
+      let url
+      if (params.name === 'search') {url = `https://api.artic.edu/api/v1/artworks/${params.artistId}`}
+      else {url = `https://api.artic.edu/api/v1/artworks/${params.name}`}
+
+      console.log(url)
+
         function getArts () {
-        axios(`https://api.artic.edu/api/v1/artworks/${name}`, {
+        console.log('getarts')
+        axios(`${url}`, {
             method: 'GET',
           })
           .then (art => {
-            //console.log(art.data.data)
+            console.log('inside Art/index.jsx')
+            console.log('art.data.data')
+            console.log(art.data.data)
             setArt(art.data.data)
             setImg(art.data.data.image_id)
+            dispatch(artsActions.setIsLoading(false))
           })
           .catch(err => {
             console.warn(err)
@@ -42,8 +60,9 @@ const Cohort = ({ data }) => {
         {art.title ? <p>{art.title}</p> : <p>Art Title Not available</p>}
         {art.category_titles ? <p>{art.category_titles}</p> : <p>Art Category Not available</p>}
         {art.credit_line ? <p>{art.credit_line}</p>: <p>Credit Line Not available</p>}
-
+        <p>{art.artist_id}</p>
       {art.artist_title ? <button onClick={getArtist}>By {art.artist_title}</button> : <p>Artist Title Not available</p>}
+
       <Outlet />
       </div>
     )

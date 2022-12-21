@@ -20,13 +20,11 @@ export default function ArtSearch() {
   const params1 = useSelector((state) => state.cart.params);
 
 
-const intObserver = useRef()
-
+  const intObserver = useRef()
   const lastPostRef = useCallback(article => {
       if (isLoading) return
   
       if (intObserver.current) intObserver.current.disconnect()
-  
       intObserver.current = new IntersectionObserver(lastArticle => {
 
           if (lastArticle[0].isIntersecting) {
@@ -63,6 +61,7 @@ const intObserver = useRef()
     if(params) {
     console.log('dispatch(artsActions.setSearchValue(params.query))')
     console.log(params)
+
     dispatch(artsActions.setSearchValue(params.query))
     }
 

@@ -21,7 +21,7 @@ const Header = () => {
         {/* {location.pathname !== '/' && <NavLink className='home' to='/'>Home</NavLink>}
         {location.pathname !== '/' && <NavLink className='credit' to='/credit'>Credit</NavLink>} */}
 
-        <div><p>search</p></div>
+
         </nav>}
 
 

@@ -65,6 +65,13 @@
   border-radius: 20px;
 }
 
+.search-value {
+  margin: 5px;
+} 
+
+#search-value-array {
+  margin: 5px;
+}
 /* -------------------- */
 
 

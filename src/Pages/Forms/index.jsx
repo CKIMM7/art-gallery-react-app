@@ -30,7 +30,7 @@ export default function SearchForm() {
     }
 
         const searchedValuesArray = searchedValues.map((value, i) => {
-            return(<Link key={i} to={`arts/search/${value}`}>{value}</Link>)
+            return(<Link className='search-value' key={i} to={`arts/search/${value}`}>{value}</Link>)
         })
     
     
@@ -39,7 +39,7 @@ export default function SearchForm() {
               <input name={searchValue} type='text' placeholder='Search For Art' value={textInput} onChange={handleChange} id="form-search"/>
                 
               <button type='submit' id='button'>search</button>
-              {searchedValues && <ul>{searchedValuesArray}</ul>}
+              {searchedValues && <ul id='search-value-array'>{searchedValuesArray}</ul>}
           </form>
 
 

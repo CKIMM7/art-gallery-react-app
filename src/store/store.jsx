@@ -23,7 +23,6 @@ const artsSlice = createSlice({
 
     setSearchedValues(state, action) {
       if (!state.searchedValues.includes(action.payload)) {
-        console.log(action.payload)
         state.searchedValues.push(action.payload)
         console.log(current(state.searchedValues))
       }

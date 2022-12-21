@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import { useParams , NavLink, Outlet } from 'react-router-dom'
+import { useParams , NavLink, Outlet, useLocation } from 'react-router-dom'
 
-const Artist = () => {
+const Artist = (data) => {
     const { name, artistId } = useParams();
     const [artist, setArtist] = useState('');
     const [altTitles, setAltTitles] = useState([]);
-    console.log('Artist jsx')
+    const { state } = useLocation();
+    const location = useLocation();
+    
+    console.log(artistId)
 
     useEffect(() => {
 
-        function getArtist () {
+      console.log('get artist!!!')
+
+      function getArtist () {
         axios(`https://api.artic.edu/api/v1/artists/${artistId}`, {
             method: 'GET',
           })
           .then (artist => {
-
+            console.log('get artist!!!')
             console.log(artist)
             setArtist(artist.data.data)
 
@@ -46,8 +51,8 @@ const Artist = () => {
     return(
         <div className='artist'>
             <h2>{artist.title}</h2>
-            {artist.birth_date ? <p>Birth Date: {artist.birth_date}</p>: <p>Not available</p>}
-            {artist.death_date ?<p>Deseased: {artist.death_date}</p>: <p>Not available</p>} 
+            {/* {artist.birth_date ? <p>Birth Date: {artist.birth_date}</p>: <p>Not available</p>}
+            {artist.death_date ?<p>Deseased: {artist.death_date}</p>: <p>Not available</p>}  */}
             {/* {altTitlesArray ? <ul>{altTitlesArray}</ul> : <p>No Alt titles</p>} */}
             <ul>{altTitlesArray}</ul>
         </div>
