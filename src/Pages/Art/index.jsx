@@ -10,14 +10,22 @@ const Cohort = ({ data }) => {
     const params = useParams();
     const [img, setImg] = useState('');
     const [art, setArt] = useState('');
-    const { state } = useLocation();  
+    const { state } = useLocation();
+    const location = useLocation(); 
     const dispatch = useDispatch()
     const isLoading = useSelector((state) => state.cart.isLoading);
     console.log(isLoading)
 
     function getArtist () {
-      return navigate(`artist/${art.artist_id}`, { state: { artist: art.artist_id } })
+
+      // if (!location.pathname.includes('search')) return navigate(`artist/${art.artist_id}`, { state: { artist: art.artist_id } })
+
+      // if (location.pathname.includes('search')) return navigate(`${params.artist}/${params.artistId}/artist/${art.artist_id}`, { state: { artist: art.artist_id } })
+
+      navigate(`artist/${art.artist_id}`, { state: { artist: art.artist_id } })
     }
+
+    console.log(params)
 
     useEffect(() => {
 

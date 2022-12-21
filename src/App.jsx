@@ -69,10 +69,10 @@ return (
       
       <Route path='arts/:name' element={<Art/>} >
         <Route path=':artist/:artistId' element={<Artist />} ></Route>
+
       </Route>
 
       <Route path='arts/search/:query' element={<ArtSearch />}>
-        <Route path='artist/:artistId' element={<Artist />} ></Route>
       </Route>
 
 
