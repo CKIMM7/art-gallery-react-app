@@ -19,7 +19,7 @@ const useGetArts = () => {
 
 
     useEffect(() => {
-        console.log('useGetArts')
+
         dispatch(artsActions.setIsLoading(true))
         setIsError(false)
         setError({})
@@ -30,7 +30,6 @@ const useGetArts = () => {
     
         getArtsAxios(pageNum, signal)
         .then(data => {
-            console.log(data)
             setResults(prev =>[...prev, ...data.data])
             setArrayLength(results.length)
             dispatch(artsActions.setIsLoading(false))

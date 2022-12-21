@@ -9,26 +9,21 @@ const Artist = (data) => {
     const { state } = useLocation();
     const location = useLocation();
     
-    console.log(artistId)
 
     useEffect(() => {
-
-      console.log('get artist!!!')
 
       function getArtist () {
         axios(`https://api.artic.edu/api/v1/artists/${artistId}`, {
             method: 'GET',
           })
           .then (artist => {
-            console.log('get artist!!!')
-            console.log(artist)
             setArtist(artist.data.data)
 
             if(!artist.data.data.alt_titles) setAltTitles(['Not available'])
             else {
               setAltTitles(artist.data.data.alt_titles)
             }
-            console.log(artist.data.data.alt_titles)
+   
           })
           .catch(err => {
             console.warn(err)
@@ -43,8 +38,8 @@ const Artist = (data) => {
 
             return (
             <li
-              key={index}>
-              {alt}
+                key={index}>
+                {alt}
             </li>)
       })
 

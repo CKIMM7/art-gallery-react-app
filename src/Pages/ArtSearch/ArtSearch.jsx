@@ -28,7 +28,6 @@ export default function ArtSearch() {
       intObserver.current = new IntersectionObserver(lastArticle => {
 
           if (lastArticle[0].isIntersecting) {
-              console.log('We are near the last post!')
               dispatch(artsActions.setPageNumSearch(1))
               //dispatch(artsActions.getMoreArts())
 
@@ -50,23 +49,20 @@ export default function ArtSearch() {
     return <ArtTest key={i} art={art} />
   })
 
-  console.log(params)
+
 
   useEffect(() => {
 
     if(searchValue === '')
-    console.log(`searchValue does not exist`)
-    console.log(searchValue)
 
     if(params) {
-    console.log('dispatch(artsActions.setSearchValue(params.query))')
-    console.log(params)
+
 
     dispatch(artsActions.setSearchValue(params.query))
     }
 
     return () => {
-      console.log('artsActions.setSearchArray([])')
+
       dispatch(artsActions.setSearchValue(''))
       dispatch(artsActions.setSearchArray([]))
     }

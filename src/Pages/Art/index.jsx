@@ -19,15 +19,11 @@ const Cohort = ({ data }) => {
       return navigate(`artist/${art.artist_id}`, { state: { artist: art.artist_id } })
     }
 
-    console.log(state)
-
     useEffect(() => {
 
       let url
       if (params.name === 'search') {url = `https://api.artic.edu/api/v1/artworks/${params.artistId}`}
       else {url = `https://api.artic.edu/api/v1/artworks/${params.name}`}
-
-      console.log(url)
 
         function getArts () {
         console.log('getarts')
@@ -35,10 +31,7 @@ const Cohort = ({ data }) => {
             method: 'GET',
           })
           .then (art => {
-            console.log('inside Art/index.jsx')
-            console.log('art.data.data')
-            console.log(art.data.data)
-            setArt(art.data.data)
+            setArt(art.data.data) 
             setImg(art.data.data.image_id)
             dispatch(artsActions.setIsLoading(false))
           })

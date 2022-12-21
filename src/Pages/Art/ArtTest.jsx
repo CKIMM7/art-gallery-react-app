@@ -14,10 +14,7 @@ const ArtTest = React.forwardRef(({ art }, ref) => {
     const searchValue = useSelector((state) => state.cart.searchValue);
     const isLoading = useSelector((state) => state.cart.isLoading);
 
-    console.log(isLoading)
-
     function checkArt () {
-        console.log('checkArt')
         if (searchValue) navigate(`${art.id}`)
         navigate(`${art.id}`, { state: { art: art } })
     }

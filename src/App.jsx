@@ -36,13 +36,9 @@ const intObserver = useRef()
   
       if (intObserver.current) intObserver.current.disconnect()
   
-      console.log(arrayLength)
-  
       intObserver.current = new IntersectionObserver(lastArticle => {
-        console.log(arrayLength)
-  
+
           if (lastArticle[0].isIntersecting) {
-              console.log('We are near the last post!')
               dispatch(artsActions.setPageNum(1))
           } 
           // else if (lastArticle[0].isIntersecting) {
@@ -64,19 +60,10 @@ const intObserver = useRef()
     return <ArtTest key={i} art={art} />
   })
 
-  //{isLoading && <p className="center">Loading More Posts...</p>}
-
-  console.log(results)
-
-
 return (
   <Routes>
     <Route path='/' element={<Header></Header>} >
-    
-    {/* <Route path='search' element={<h1>search</h1>} >
-          <Route path=':name' element={<h1>param</h1>} ></Route>
-        </Route> */}
-
+  
       <Route path='arts' element={<section id='arts'>{content}</section>} >
       </Route>
       
@@ -85,6 +72,7 @@ return (
       </Route>
 
       <Route path='arts/search/:query' element={<ArtSearch />}>
+        <Route path='artist/:artistId' element={<Artist />} ></Route>
       </Route>
 
 

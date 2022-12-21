@@ -9,7 +9,6 @@ const Cohorts = ({ data }) => {
     const navigate =  useNavigate()
 
     function checkArt () {
-        console.log('checkArt')
         navigate(`${data.id}`)
     }
 

@@ -24,7 +24,7 @@ const artsSlice = createSlice({
     setSearchedValues(state, action) {
       if (!state.searchedValues.includes(action.payload)) {
         state.searchedValues.push(action.payload)
-        console.log(current(state.searchedValues))
+
       }
 
     },
@@ -42,47 +42,47 @@ const artsSlice = createSlice({
     },
 
     getMoreArts(state, action) {
-        console.log(state.nextPage)
+
         state.nextPage = !state.nextPage
       },
 
     setArts(state, action) {
-        console.log(action.payload)
+
         state.arts = action.payload
       },
 
     setArtist(state, action) {
-        console.log(action.payload)
+
         state.artist = action.payload
     },
 
     setCategories(state, action) {
-      console.log(action.payload)
+
       state.categories = action.payload
     },
 
     setArtistImage(state, action) {
-      console.log(action.payload)
+
       state.artistImage = action.payload
     },
 
     setTextInput(state, action) {
-      //console.log(action.payload)
+
       state.textInput = action.payload
     },
   
     setSearchValue(state, action) {
-      console.log(action.payload)
+
       state.searchValue = action.payload
     },
 
     setSearchArray(state, action) {
-      console.log(action.payload)
+
       state.searchArray = action.payload
     },
 
     setIsLoading(state, action) {
-      console.log(action.payload)
+
       state.isLoading = action.payload
     },
 
@@ -92,7 +92,7 @@ const artsSlice = createSlice({
     },
 
     setError(state, action) {
-      console.log(action.payload)
+
       state.error = action.payload
     }
 

@@ -28,18 +28,13 @@ const useSearchArts = () => {
         const controller = new AbortController();
         const { signal } = controller;
 
-        console.log(searchValue)
 
         if(searchValue || params)
     
         getArtsAxios(pageNumSearch, signal, searchValue)
         .then(data => { 
-            console.log(searchValue)    
-            console.log(searchArray)
 
             let newArray = searchArray.concat(data.data)
-            console.log(newArray)
-
             dispatch(artsActions.setSearchArray(newArray))
             dispatch(artsActions.setIsLoading(false))
             dispatch(artsActions.setIsError(false))
