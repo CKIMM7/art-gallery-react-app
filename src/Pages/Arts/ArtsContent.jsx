@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react'
 import useGetArts from '../../api/useGetArts'
-import ArtTest from '../Art/ArtTest';
+import ArtTest from '../Art/ArtComponent';
 import { useSelector, useDispatch } from 'react-redux';
 import { artsActions } from '../../store/store';
 

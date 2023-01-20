@@ -13,6 +13,7 @@ const artsSlice = createSlice({
       searchValue: '',
       searchedValues: [],
       textInput: '' ,
+      artArray:[],
       searchArray: [],
       isLoading: false,
       isError: false,
@@ -20,6 +21,10 @@ const artsSlice = createSlice({
       params: ''
   },
   reducers: {
+
+    setArtArray(state, action) {
+        state.artArray.push(action.payload)
+    },
 
     setSearchedValues(state, action) {
       if (!state.searchedValues.includes(action.payload)) {

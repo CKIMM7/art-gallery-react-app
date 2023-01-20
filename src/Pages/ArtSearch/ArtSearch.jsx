@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { artsActions } from '../../store/store';
 import useSearchArts from '../../api/useSearchArts';
 
-import ArtTest from '../Art/ArtTest';
+import ArtTest from '../Art/ArtComponent';
 
 export default function ArtSearch() {
 
@@ -49,15 +49,13 @@ export default function ArtSearch() {
     return <ArtTest key={i} art={art} />
   })
 
-
+  console.log('artSearch')
 
   useEffect(() => {
 
     if(searchValue === '')
 
     if(params) {
-
-
     dispatch(artsActions.setSearchValue(params.query))
     }
 

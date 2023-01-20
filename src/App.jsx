@@ -9,7 +9,7 @@ import Art from './Pages/Art'
 import Arts from './Pages/Arts'
 import Welcome from './Pages/Welcome'
 import Artist from "./Pages/Artist";
-import ArtTest from "./Pages/Art/ArtTest";
+import ArtComponent from "./Pages/Art/ArtComponent";
 import ArtSearch from "./Pages/ArtSearch/ArtSearch";
 
 import ArtsContent from "./Pages/Arts/ArtsContent";
@@ -30,7 +30,7 @@ function App() {
     setResults
 } = useGetArts(pageNum)
 
-const intObserver = useRef()
+  const intObserver = useRef();
   const lastPostRef = useCallback(article => {
       if (isLoading) return
   
@@ -52,27 +52,28 @@ const intObserver = useRef()
   
   if (isError) return <p className='center'>Error: {error.message}</p>
   
-  const content = results.map((art, i) => {
+  const homePageContents = results.map((art, i) => {
 
     if(results.length === i + 1) {
-      return <ArtTest ref={lastPostRef} key={i} art={art} />
+      return <ArtComponent ref={lastPostRef} key={i} art={art} />
     }
-    return <ArtTest key={i} art={art} />
+    return <ArtComponent key={i} art={art} />
   })
 
 return (
   <Routes>
     <Route path='/' element={<Header></Header>} >
   
-      <Route path='arts' element={<section id='arts'>{content}</section>} >
+      <Route path='arts' element={<section id='arts'>{homePageContents}</section>} >
       </Route>
       
       <Route path='arts/:name' element={<Art/>} >
         <Route path=':artist/:artistId' element={<Artist />} ></Route>
       </Route>
 
-      <Route path='arts/search/:query' element={<ArtSearch />}>
-      </Route>
+
+
+      <Route path='arts/search/:query' element={<ArtSearch />}></Route>
 
 
       <Route path='*' element={<h1>Not Found</h1>} ></Route>

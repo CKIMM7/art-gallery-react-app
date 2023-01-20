@@ -16,7 +16,7 @@ const useGetArts = () => {
 
     const pageNum = useSelector((state) => state.cart.pageNum);
     const isLoading = useSelector((state) => state.cart.isLoading);
-
+    const artArray = useSelector((state) => state.cart.artArray);
 
     useEffect(() => {
 
@@ -30,7 +30,12 @@ const useGetArts = () => {
     
         getArtsAxios(pageNum, signal)
         .then(data => {
+
+            let newArray = artArray.concat(data.data)
+            dispatch(artsActions.setArtArray(newArray))
+
             setResults(prev =>[...prev, ...data.data])
+
             setArrayLength(results.length)
             dispatch(artsActions.setIsLoading(false))
         })

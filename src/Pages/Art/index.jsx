@@ -5,23 +5,19 @@ import axios from 'axios';
 import { useParams, useNavigate, Outlet, useLocation } from 'react-router-dom'
 
 const Cohort = ({ data }) => {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const { name } = useParams();
     const params = useParams();
     const [img, setImg] = useState('');
     const [art, setArt] = useState('');
-    const { state } = useLocation();
-    const location = useLocation(); 
-    const dispatch = useDispatch()
+
+
     const isLoading = useSelector((state) => state.cart.isLoading);
-    console.log(isLoading)
+
+    console.log('cohort')
 
     function getArtist () {
-
-      // if (!location.pathname.includes('search')) return navigate(`artist/${art.artist_id}`, { state: { artist: art.artist_id } })
-
-      // if (location.pathname.includes('search')) return navigate(`${params.artist}/${params.artistId}/artist/${art.artist_id}`, { state: { artist: art.artist_id } })
-
       navigate(`artist/${art.artist_id}`, { state: { artist: art.artist_id } })
     }
 
